@@ -4,20 +4,20 @@ services:
 
 
 before_install:
-    - docker build -t mujtaba-tirmazi/react-test -f ./client/Dockerfile.dev ./client
+    - docker build -t mujtabatirmazi/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-    - docker run mujtaba-tirmazi/react-test npm test -- --coverage
+    - docker run mujtabatirmazi/react-test npm test -- --coverage
 
 after_success:
-    - docker build -t mujtaba-tirmazi/multi-client ./client
-    - docker build -t mujtaba-tirmazi/multi-nginx ./nginx
-    - docker build -t mujtaba-tirmazi/multi-server ./server
-    - docker build -t mujtaba-tirmazi/multi-worker ./worker
+    - docker build -t mujtabatirmazi/multi-client ./client
+    - docker build -t mujtabatirmazi/multi-nginx ./nginx
+    - docker build -t mujtabatirmazi/multi-server ./server
+    - docker build -t mujtabatirmazi/multi-worker ./worker
     #login to docker cli
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
     #take images and push to docker hub
-    - docker push mujtaba-tirmazi/multi-client 
-    - docker push mujtaba-tirmazi/multi-nginx
-    - docker push mujtaba-tirmazi/multi-server
-    - docker push mujtaba-tirmazi/multi-worker 
+    - docker push mujtabatirmazi/multi-client 
+    - docker push mujtabatirmazi/multi-nginx
+    - docker push mujtabatirmazi/multi-server
+    - docker push mujtabatirmazi/multi-worker 
